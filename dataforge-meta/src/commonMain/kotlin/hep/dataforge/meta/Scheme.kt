@@ -6,7 +6,6 @@ import hep.dataforge.meta.descriptors.defaultItem
 import hep.dataforge.meta.descriptors.get
 import hep.dataforge.names.Name
 import hep.dataforge.names.NameToken
-import hep.dataforge.names.asName
 
 /**
  * A base for delegate-based or descriptor-based scheme. [Scheme] has an empty constructor to simplify usage from [Specification].
@@ -38,6 +37,7 @@ public open class Scheme(
     override fun toMeta(): Laminate = Laminate(config, defaultLayer)
 
     private inner class DefaultLayer : MetaBase() {
+        @OptIn(ExperimentalStdlibApi::class)
         override val items: Map<NameToken, MetaItem<*>> = buildMap {
             descriptor?.items?.forEach { (key, itemDescriptor) ->
                 val token = NameToken(key)

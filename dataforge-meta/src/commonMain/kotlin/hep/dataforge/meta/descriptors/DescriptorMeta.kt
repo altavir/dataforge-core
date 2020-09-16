@@ -10,6 +10,7 @@ import hep.dataforge.names.NameToken
  * A [Meta] that is constructed from [NodeDescriptor]
  */
 private class DescriptorMeta(val descriptor: NodeDescriptor) : Meta, MetaBase() {
+    @OptIn(ExperimentalStdlibApi::class)
     override val items: Map<NameToken, MetaItem<*>>
         get() = buildMap {
             descriptor.items.forEach { (token, descriptorItem) ->
